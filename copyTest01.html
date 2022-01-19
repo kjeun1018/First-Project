@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div clss="container">
+    <button class="test">dd</button>
+    <button onclick="copy3()" class="btn1">COPY!</button>
+    <p>
+        What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </p>
+    <input value="hi" id="text3">
+    <script>
+        // 1. 화면에서 사용자가 복사 원하는 영역을 선택하고 복사하는 버튼
+        function copy1() {
+            document.execCommand("copy");
+        }
+
+        function copy2() { // input text copy
+            var obj = document.getElementById("text2");
+            obj.select(); //인풋 컨트롤의 내용 전체 선택
+            document.execCommand("copy"); //복사
+            obj.setSelectionRange(0, 0); //선택영역 초기화
+        }
+
+        function copy3() {
+            var obj = document.getElementById("text3");
+            var range = document.createRange();
+            range.selectNode(obj.childNodes[0]); //텍스트 정보를 Range 객체에 저장
+            var sel = window.getSelection();
+            sel.removeAllRanges(); //기존 선택정보 삭제
+            sel.addRange(range); //텍스트 정보 선택
+            document.execCommand("copy"); //복사
+            sel.removeRange(range); //선택 정보 삭제
+
+            range.setStart(obj.childNodes[0], 0); //추가
+            range.setEnd(obj.childNodes[0], 5); //추가
+
+        }
+
+       // $(document).ready(function() {
+           // alert('hi');
+        //});
+
+        function test() {
+            let a = $('#test3').val();
+
+            console.log(a);
+        }
+
+
+    </script>
+
+</div>
+</body>
+</html>

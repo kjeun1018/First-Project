@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+        $.ajax({
+            url : "http://spartacodingclub.shop/sparta_api/seoulbike",
+            data:{},
+            type:"GET",
+            success:function(response) {
+                let rows = response['getStationList']['row']
+
+                for(let i = 0; i < rows.length; i++) {
+                    let parkingBikeTotCnt = rows[i]['parkingBikeTotCnt']
+                    let rackTotCnt = rows[i]['rackTotCnt']
+                    let shared = rows[i]['shared']
+                    let stationId = rows[i]['stationId']
+                    let stationLatitude = rows[i]['stationLatitude']
+                    let stationLongitude = rows[i]['stationLongitude']
+                    let stationName = rows[i]['stationName']
+
+                    //console.log(parkingBikeTotCnt,rackTotCnt,shared,stationId,stationLatitude,stationLongitude,stationName)
+                    let tmp_html = ` <tr>
+                                    <td>${parkingBikeTotCnt}</td>
+                                    <td>${rackTotCnt}</td>
+                                    <td>${shared}</td>
+                                    <td>${stationId}</td>
+                                    <td>${stationLatitude}</td>
+                                    <td>${stationLongitude}</td>
+                                    <td>${stationName}</td>
+                                    </tr>`
+
+                    $('#t').append(tmp_html);
+                }
+            }
+
+        })
+    </script>
+</head>
+<body>
+
+<div>
+    <table>
+        <tr id="t" class="t">
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

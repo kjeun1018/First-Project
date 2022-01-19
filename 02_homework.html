@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="index.css" type="text/css"></script>
+<title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
+<style>
+    .wrap {
+        width: 500px;
+        height: 400px;
+        margin: auto;
+    }
+
+    .img {
+        width: 300px;
+        height: 400px;
+        margin: auto;
+        background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20211130_119%2F1638274028665I1Br0_JPEG%2F39409862485338110_871045478.jpeg&type=a340");
+        background-position: center;
+        background-size: cover;
+    }
+
+    .title {
+        size: 30px;
+    }
+
+    .btn-primary {
+        width: 200px;
+        margin: auto;
+        display: block;
+    }
+
+    .dropdown {
+        float: left;
+    }
+</style>
+<script>
+
+    $(document).ready(function(){
+       $.ajax({
+        data:{},
+        url:"http://spartacodingclub.shop/sparta_api/rate",
+        type:"GET",
+        success:function(response) {
+          let rate = response['rate']
+          $('#rate').text(rate);
+        }
+
+
+      })
+    });
+
+
+
+
+</script>
+</head>
+
+<body>
+<div class="wrap">
+<div class="img"></div>
+<div>
+    <h2 class="title">크리스마스 랜턴</h2>
+    <span class="price">가격 : 80,000원 / (개당 가격)</span>
+
+    <p class="detail">아주 귀여운 산타 랜턴으로 크리스마스 분위기에 최고 :) </p>
+    <p id="rate"></p>
+    <hr>
+    <form>
+        <div class="form-group">
+            <label for="exampleInputName">주문자 성함</label>
+            <input type="email" class="form-control" id="exampleInputNAme"
+                   placeholder="성함을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label for="exampleInput">수량</label>
+            <!--<input type="text" class="form-control" id="exampleInput" placeholder="수량">-->
+        </div>
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">1</a>
+                <a class="dropdown-item" href="#">2</a>
+                <a class="dropdown-item" href="#">3</a>
+            </div>
+        </div>
+        <br><br>
+        <div class="form-group">
+            <label for="exampleInputAddress">주소</label>
+            <input type="address" class="form-control" id="exampleInputAddress" placeholder="주소를 입력하세요.">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputCallNum">연락처</label>
+            <input type="text" class="form-control" id="exampleInputCallNum" placeholder="연락처를 입력하세요.">
+        </div>
+        <button type="button" class="btn-primary">주문하기</button>
+    </form>
+
+
+</div>
+
+
+</body>
+
+</html>

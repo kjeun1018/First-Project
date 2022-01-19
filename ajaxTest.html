@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+
+        $.ajax({
+            url:"http://spartacodingclub.shop/post",
+            data:{},
+            type:"GET",
+            success:function(response) {
+                let rows = response['articles']
+
+                for(let i =0;i<rows.length;i++) {
+                    let comment = rows[i]['comment']
+                    let title = rows[i]['title']
+                    let desc = rows[i]['desc']
+
+                    let tmp_html = `<td>${title}</td>
+                                <td>${comment}</td>
+                                <td>${desc}</td>`
+
+                $('#t').append(tmp_html);
+                }
+
+
+
+            }
+        })
+    </script>
+<body>
+
+    <div class="container">
+        <table class="t" id="t">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </table>
+
+    </div>
+</body>
+</html>
